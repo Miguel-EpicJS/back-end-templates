@@ -1,0 +1,1 @@
+exports.Articles = [{ title: "Este é um artigo de teste", desc: "Postado em xx/xx/xxxx por Miguel", corp: "Aqui insira o corpo do artigo!"}]

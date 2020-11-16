@@ -1,0 +1,15 @@
+{
+  "name": "simple-blog-back-end",
+  "version": "1.0.0",
+  "description": "Uma simples API para artigos de blog(sem conexão com banco de dados!)",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon src/index.js"
+  },
+  "author": "Miguel Martinez",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.6"
+  }
+}
