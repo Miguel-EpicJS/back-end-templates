@@ -1,11 +1,11 @@
 import { Template } from 'meteor/templating'
 
 import './body.html';
+import { Tasks } from '../api/tasks.js';
+
 
 Template.body.helpers({
-    tasks:[
-        {text: "This is the first task"},
-        {text: "This is the second task"},
-        {text: "This is the third task"},
-    ],
+    tasks(){
+        return Tasks.find({});
+    },
 })
