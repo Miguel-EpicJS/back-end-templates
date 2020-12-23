@@ -6,7 +6,7 @@ import './body.html';
 import { Tasks } from '../api/tasks.js';
 
 
-Template.body.onCreated(function bodyOnCreated(){
+Template.body.onCreated(function bodyOnCreated() {
     this.state = new ReactiveDict();
 })
 
@@ -14,11 +14,14 @@ Template.body.helpers({
     tasks() {
 
         const instance = Template.instance();
-        if(instance.state.get('hideCompleted')){
+        if (instance.state.get('hideCompleted')) {
             return Tasks.find({ checked: { $ne: true } }, { sort: { createdAt: -1 } });
         }
 
         return Tasks.find({}, { sort: { createdAt: -1 } });
+    },
+    incompleteCount() {
+        return Tasks.find({ checked: { $ne: true } }).count();
     },
 })
 
