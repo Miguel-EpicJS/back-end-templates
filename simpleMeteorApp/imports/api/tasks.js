@@ -5,10 +5,11 @@ import { check } from 'meteor/check';
 export const Tasks = new Mongo.Collection('tasks');
 
 Meteor.methods({
-    'tasks.insert'(text){
+    'tasks.insert'(text) {
         check(text, String);
 
-        if(! this.userId){
+        // Make sure the user is logged in before inserting a task
+        if (!this.userId) {
             throw new Meteor.Error('not-authorized');
         }
 
@@ -17,13 +18,17 @@ Meteor.methods({
             createdAt: new Date(),
             owner: this.userId,
             username: Meteor.users.findOne(this.userId).username,
-        })
+        });
     },
+    'tasks.remove'(taskId) {
+        check(taskId, String);
 
-    'tasks.remove'(taskId, setChecked){
+        Tasks.remove(taskId);
+    },
+    'tasks.setChecked'(taskId, setChecked) {
         check(taskId, String);
         check(setChecked, Boolean);
 
         Tasks.update(taskId, { $set: { checked: setChecked } });
     },
-})
+});
