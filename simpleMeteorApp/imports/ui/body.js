@@ -1,5 +1,6 @@
 import { Template } from 'meteor/templating'
 
+import './task.js';
 import './body.html';
 import { Tasks } from '../api/tasks.js';
 
