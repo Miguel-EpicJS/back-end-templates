@@ -6,6 +6,10 @@ import './body.html';
 import { Tasks } from '../api/tasks.js';
 
 
+Template.body.onCreated(function bodyOnCreated(){
+    this.state = new ReactiveDict();
+})
+
 Template.body.helpers({
     tasks() {
         return Tasks.find({}, { sort: { createdAt: -1 } });
